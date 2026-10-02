@@ -11,11 +11,39 @@
     width: 100%;
     padding: 0px 15%;
     min-height: 700px;
-    background-image: url("../images/bg-dark.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position: center;
+    position: relative;
+    isolation: isolate;
+
+    // The purple ribbon lives on its own layer so it can flow without moving the content
+    &::before {
+        content: "";
+        position: absolute;
+        inset: -6%;
+        z-index: -1;
+        background-image: url("../images/bg-dark.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        transform-origin: 60% 50%;
+        animation: ribbon-flow 18s ease-in-out infinite alternate;
+        will-change: transform, filter;
+        pointer-events: none;
+    }
+}
+
+.light-mode .about-section::before {
+    background-image: url("../images/bg-light.png");
+}
+
+@keyframes ribbon-flow {
+    0%   { transform: translate3d(0, 0, 0) scale(1.02) rotate(0deg); filter: hue-rotate(0deg) saturate(1); }
+    35%  { transform: translate3d(-2.5%, 1.5%, 0) scale(1.08) rotate(-1.5deg); filter: hue-rotate(-18deg) saturate(1.15); }
+    70%  { transform: translate3d(1.5%, -1%, 0) scale(1.05) rotate(1deg); filter: hue-rotate(14deg) saturate(1.05); }
+    100% { transform: translate3d(3%, 1%, 0) scale(1.1) rotate(2deg); filter: hue-rotate(-8deg) saturate(1.2); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-section::before { animation: none; }
 }
 
 .about-section .content {
