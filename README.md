@@ -20,10 +20,11 @@ npm test         # run the full test suite (desktop + mobile)
 | Title, heading, all 8 lifecycle stages present | Content regressions |
 | Nav anchors resolve to real sections | Broken navigation |
 | No local link or asset returns 404 | Broken links, missing images |
-| Theme toggle and mobile menu work | Interactive behaviour |
+| Mobile menu works | Interactive behaviour |
+| Avatar loads, space scene renders and follows the mouse | VR hero works |
 | No horizontal scroll on mobile | Responsive layout |
 | No console errors | JS regressions |
-| WCAG 2 A/AA via axe-core, light and dark themes | Accessibility |
+| WCAG 2 A/AA via axe-core | Accessibility |
 
 CI runs the tests on every push and pull request. Pushes to `main` deploy to GitHub Pages **only if all tests pass**.
 That's a quality gate, the same way I'd set one up for a product team.

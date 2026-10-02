@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#070818">
   <title>Adeeb Hussain — AI Native QA Engineering Lead</title>
   <meta name="description" content="Adeeb Hussain: London-based AI Native QA Engineering Lead with 10+ years shipping web, mobile and TV apps at Meta, Discovery+, Selfridges and Channel 4.">
   <meta property="og:title" content="Adeeb Hussain — AI Native QA Engineering Lead">
@@ -16,6 +18,7 @@
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
+  <canvas id="space" aria-hidden="true"></canvas>
 
   <header class="site-header">
     <nav class="nav container" aria-label="Main">
@@ -27,26 +30,43 @@
         <li><a href="#case-studies">Case studies</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><button class="theme-toggle" type="button" aria-label="Toggle dark mode">◐</button></li>
       </ul>
     </nav>
   </header>
 
   <main id="main">
     <!-- HERO -->
-    <section class="hero container" id="top">
-      <p class="eyebrow mono">// AI Native QA Engineering Lead · London</p>
-      <h1>Hi, I'm <span class="accent">Adeeb Hussain</span>.<br>I make sure software ships <em>right</em>.</h1>
-      <p class="lead">
-        For 10+ years I've been at the heart of global web, mobile and TV teams at
-        <strong>Meta</strong>, <strong>Discovery+</strong>, <strong>Selfridges</strong> and <strong>Channel 4</strong>,
-        helping ship multi-million-pound products used by millions. I champion shift-left testing, lead
-        teams onshore and offshore, and I'm now moving QA from manual to <strong>agentic, AI-driven testing</strong>.
-      </p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#contact">Get in touch</a>
-        <a class="btn btn-ghost" href="https://www.linkedin.com/in/adeebhussain/" target="_blank" rel="noopener">View LinkedIn</a>
+    <section class="hero" id="top">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow mono">// AI Native QA Engineering Lead · London</p>
+          <h1>Hi, I'm <span class="accent">Adeeb Hussain</span>.<br>I make sure software ships <em>right</em>.</h1>
+          <p class="lead">
+            For 10+ years I've been at the heart of global web, mobile and TV teams at
+            <strong>Meta</strong>, <strong>Discovery+</strong>, <strong>Selfridges</strong> and <strong>Channel 4</strong>,
+            helping ship multi-million-pound products used by millions. I champion shift-left testing, lead
+            teams onshore and offshore, and I'm now moving QA from manual to <strong>agentic, AI-driven testing</strong>.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#contact">Get in touch</a>
+            <a class="btn btn-ghost" href="https://www.linkedin.com/in/adeebhussain/" target="_blank" rel="noopener">View LinkedIn</a>
+          </div>
+        </div>
+        <div class="avatar-stage">
+          <div class="avatar-tilt">
+            <div class="avatar-float">
+              <img class="avatar" src="assets/avatar.png" width="280" height="898" alt="Adeeb's 3D avatar standing on a holographic platform">
+            </div>
+            <div class="platform" aria-hidden="true"><span class="platform-plane"><span class="ring ring-1"></span><span class="ring ring-2"></span><span class="ring ring-3"></span></span></div>
+          </div>
+          <ul class="hud mono" aria-label="Highlights from my work">
+            <li class="hud-chip hud-1"><span class="live-dot" aria-hidden="true"></span>Coldplay × Meta Horizon</li>
+            <li class="hud-chip hud-2">20,000 attendees</li>
+            <li class="hud-chip hud-3">Agentic testing</li>
+          </ul>
+        </div>
       </div>
+      <div class="container hero-meta">
       <ul class="stats" aria-label="Highlights">
         <li><span class="stat-num">10+</span><span class="stat-label">years in QA</span></li>
         <li><span class="stat-num">20+</span><span class="stat-label">QAs led at Meta, onshore &amp; offshore</span></li>
@@ -61,6 +81,7 @@
           <li><span>Discovery+</span></li>
           <li><span>Selfridges</span></li>
         </ul>
+      </div>
       </div>
     </section>
 
@@ -360,5 +381,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="space.js"></script>
 </body>
 </html>

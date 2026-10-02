@@ -37,17 +37,6 @@ test("local links and assets do not 404", async ({ page, request }) => {
   }
 });
 
-test("theme toggle switches between light and dark", async ({ page }) => {
-  const html = page.locator("html");
-  const toggle = page.locator(".theme-toggle");
-  if (await page.locator(".nav-toggle").isVisible()) await page.locator(".nav-toggle").click();
-  await toggle.click();
-  const first = await html.getAttribute("data-theme");
-  expect(["light", "dark"]).toContain(first);
-  await toggle.click();
-  await expect(html).not.toHaveAttribute("data-theme", first);
-});
-
 test("mobile menu opens and closes", async ({ page, isMobile }) => {
   test.skip(!isMobile, "mobile only");
   const toggle = page.locator(".nav-toggle");
@@ -73,10 +62,35 @@ test("no console errors", async ({ page }) => {
   expect(errors).toEqual([]);
 });
 
-for (const theme of ["light", "dark"]) {
-  test(`no accessibility violations (${theme})`, async ({ page }) => {
-    await page.evaluate((t) => (document.documentElement.dataset.theme = t), theme);
-    const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();
-    expect(results.violations.map((v) => `${v.id}: ${v.help}`)).toEqual([]);
-  });
-}
+test("no accessibility violations", async ({ page }) => {
+  const results = await new AxeBuilder({ page }).withTags(["wcag2a", "wcag2aa"]).analyze();
+  expect(results.violations.map((v) => `${v.id}: ${v.help}`)).toEqual([]);
+});
+
+test("avatar is shown in the hero", async ({ page }) => {
+  const avatar = page.getByRole("img", { name: /avatar/i });
+  await expect(avatar).toBeVisible();
+  expect(await avatar.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
+});
+
+test("space scene renders", async ({ page }) => {
+  await expect.poll(() =>
+    page.evaluate(() => {
+      const c = document.getElementById("space");
+      const data = c.getContext("2d").getImageData(0, 0, c.width, c.height).data;
+      let lit = 0;
+      for (let i = 3; i < data.length; i += 4 * 97) if (data[i] > 0) lit++;
+      return lit;
+    })
+  ).toBeGreaterThan(20);
+});
+
+test("scene responds to the mouse", async ({ page, isMobile }) => {
+  test.skip(isMobile, "pointer tracking is desktop only");
+  const mx = () => page.evaluate(() => parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--mx")));
+  const size = page.viewportSize();
+  await page.mouse.move(size.width - 5, size.height / 2);
+  await expect.poll(mx).toBeGreaterThan(0.5);
+  await page.mouse.move(5, size.height / 2);
+  await expect.poll(mx).toBeLessThan(-0.5);
+});
