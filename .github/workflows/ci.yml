@@ -45,11 +45,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Collect site files
-        run: mkdir _site && cp -r index.html *.css *.js assets _site/
+        run: |
+          mkdir _site && cp -r index.html *.css *.js assets _site/
+          # Cache-bust CSS/JS so visitors get the new version straight after a deploy
+          sed -i -E "s/(href|src)=\"([a-z]+\.(css|js))\"/\1=\"\2?v=${GITHUB_SHA::7}\"/g" _site/index.html
       - name: Check every local file the page references is in the bundle
         run: |
           missing=0
-          for f in $(grep -oE '(src|href)="[^"#:]+"' _site/index.html | sed -E 's/^(src|href)="//; s/"$//'); do
+          for f in $(grep -oE '(src|href)="[^"#:]+"' _site/index.html | sed -E 's/^(src|href)="//; s/"$//; s/\?.*$//'); do
             if [ ! -f "_site/$f" ]; then echo "::error::Missing from deploy bundle: $f"; missing=1; fi
           done
           exit $missing
