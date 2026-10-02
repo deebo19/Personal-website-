@@ -28,13 +28,16 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "prestart": "node scripts/gen-snippets.mjs",
     "start": "react-scripts start",
+    "prebuild": "node scripts/gen-snippets.mjs",
     "build": "react-scripts build",
     "serve": "node tests/serve.mjs",
     "pretest": "npm run build",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "report": "playwright show-report"
+    "report": "playwright show-report",
+    "test:python": "cd qa && pytest"
   },
   "eslintConfig": {
     "extends": [

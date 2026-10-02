@@ -39,7 +39,7 @@ test("all case studies and roles are listed", async ({ page }) => {
 
 test("nav links point to sections that exist", async ({ page }) => {
   const hrefs = await page.locator("#navigation a[href^='#'], .MuiDrawer-root a[href^='#']")
-    .evaluateAll((as) => as.map((a) => a.getAttribute("href")));
+    .evaluateAll((as) => as.map((a) => a.getAttribute("href")).filter((h) => !h.startsWith("#/")));
   expect(hrefs.length).toBeGreaterThan(0);
   for (const href of new Set(hrefs)) {
     await expect(page.locator(href), `section ${href}`).toHaveCount(1);

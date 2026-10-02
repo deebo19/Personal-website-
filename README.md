@@ -33,4 +33,6 @@ npm test         # builds, then runs the full test suite (desktop + mobile)
 | No horizontal scroll, no console errors | Layout and JS regressions |
 | WCAG 2 A/AA via axe-core, in dark **and** light mode | Accessibility |
 
-CI (`.github/workflows/ci.yml`) builds the site, runs the tests against that exact build, checks the bundle has every referenced file, and only then deploys it from `main`.
+A second, independent suite lives in [`qa/`](qa/README.md): **Python + Playwright + Page Object Model**, run headless with `cd qa && pytest`. It's explained on the site's own "How I Test" page.
+
+CI (`.github/workflows/ci.yml`) builds the site, runs the JS suite against that exact build, then the Python POM suite, checks the bundle has every referenced file, and only deploys from `main` when everything passed.

@@ -3,3 +3,8 @@ build/
 test-results/
 playwright-report/
 .DS_Store
+src/generated/
+__pycache__/
+.pytest_cache/
+qa/test-results/
+.venv/

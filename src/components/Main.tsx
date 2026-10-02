@@ -4,8 +4,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import avatar from '../assets/images/avatar.png';
 import me from '../assets/images/me.png';
-import { MetaLogo, Channel4Logo, MetaBackdrop } from './Logos';
-import { LINKS, PROFILE, COMPANY_STATS, CompanyStat } from '../data';
+import { MetaLogo, MetaBackdrop, CompanyLogo } from './Logos';
+import { LINKS, PROFILE, COMPANY_STATS } from '../data';
 import '../assets/styles/Main.scss';
 
 function SocialIcons({ className }: { className: string }) {
@@ -16,12 +16,6 @@ function SocialIcons({ className }: { className: string }) {
       <a href={LINKS.email} aria-label="Email"><EmailIcon/></a>
     </div>
   );
-}
-
-function CompanyLogo({ logo }: { logo: CompanyStat["logo"] }) {
-  if (logo === "meta") return <MetaLogo/>;
-  if (logo === "c4") return <Channel4Logo/>;
-  return null;
 }
 
 function Main() {
@@ -42,7 +36,10 @@ function Main() {
           <ul className="company-stats">
             {COMPANY_STATS.map((c) => (
               <li key={c.company} className={c.logo === "meta" ? "is-meta" : undefined}>
-                <span className="company-name"><CompanyLogo logo={c.logo}/>{c.company}</span>
+                <span className={`company-name${c.logo === "selfridges" ? " wordmark-only" : ""}`}>
+                  <CompanyLogo logo={c.logo}/>
+                  {c.logo === "selfridges" ? <span className="visually-hidden">{c.company}</span> : c.company}
+                </span>
                 <span className="stat-num">{c.value}</span>
                 <span className="stat-label">{c.label}</span>
                 <a className="stat-source" href={c.source} target="_blank" rel="noreferrer">

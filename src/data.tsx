@@ -33,14 +33,14 @@ export const PROFILE = {
 };
 
 // Reach of the products I've tested. Each figure links to its public source.
-export type CompanyStat = { company: string; logo?: "meta" | "c4"; value: string; label: string; source: string };
+export type CompanyStat = { company: string; logo?: "meta" | "c4" | "discovery" | "selfridges"; value: string; label: string; source: string };
 
 export const COMPANY_STATS: CompanyStat[] = [
   { company: "Meta", logo: "meta", value: "3.5B+", label: "daily active people across Meta's apps (Dec 2025)",
     source: "https://www.redlandscommunitynews.com/online_features/press_releases/meta-reports-fourth-quarter-and-full-year-2025-results/article_dcc1ae8b-b667-54d0-832d-86cdd8b43fca.html" },
-  { company: "Discovery+", value: "22M", label: "streaming subscribers by end of 2021, mostly discovery+",
+  { company: "Discovery+", logo: "discovery", value: "22M", label: "streaming subscribers by end of 2021, mostly discovery+",
     source: "https://www.sec.gov/Archives/edgar/data/1437107/000143710722000026/a20211231-ex991pressrelease.htm" },
-  { company: "Selfridges", value: "8M+", label: "monthly visits to selfridges.com (Dec 2025)",
+  { company: "Selfridges", logo: "selfridges", value: "8M+", label: "monthly visits to selfridges.com (Dec 2025)",
     source: "https://www.semrush.com/website/selfridges.com/overview/" },
   { company: "Channel 4", logo: "c4", value: "1.9B+", label: "streaming views in 2025",
     source: "https://www.channel4.com/corporate/performance/channel-4-annual-report-2024" },
@@ -78,11 +78,11 @@ export const EXPERTISE = [
   },
 ];
 
-export type Role = { title: string; company: string; meta?: boolean; c4?: boolean; dates: string; points: React.ReactNode[] };
+export type Role = { title: string; company: string; meta?: boolean; logo?: "meta" | "c4" | "discovery" | "selfridges"; dates: string; points: React.ReactNode[] };
 
 export const ROLES: Role[] = [
   {
-    title: "AI Native QA Engineer", company: "Meta", meta: true, dates: "Dec 2025 – present",
+    title: "AI Native QA Engineer", company: "Meta", meta: true, logo: "meta", dates: "Dec 2025 – present",
     points: [
       "Leading the Horizon Worlds QA team to become AI native, moving from manual testing to agentic testing.",
       <>QA Lead for <a href={LINKS.coldplay} {...ext}>Coldplay's <em>Music of the Spheres World Tour</em> immersive concert</a>, launching the new Arena in Meta Horizon (Dec 2025) with iHeartMedia. Included demos for Mark Zuckerberg; 20,000 attendees.</>,
@@ -92,7 +92,7 @@ export const ROLES: Role[] = [
     ],
   },
   {
-    title: "QA Engineering Lead", company: "Meta", meta: true, dates: "Jan 2024 – Dec 2025",
+    title: "QA Engineering Lead", company: "Meta", meta: true, logo: "meta", dates: "Jan 2024 – Dec 2025",
     points: [
       "Led an onshore and offshore team of 20+ QAs maintaining the quality bar for Meta's virtual worlds.",
       "Led testing of Workplace, the enterprise version of Facebook with 10 million users across web and mobile.",
@@ -100,7 +100,7 @@ export const ROLES: Role[] = [
     ],
   },
   {
-    title: "Senior QA Engineer", company: "Selfridges.com", dates: "Aug 2021 – Jan 2024",
+    title: "Senior QA Engineer", company: "Selfridges.com", logo: "selfridges", dates: "Aug 2021 – Jan 2024",
     points: [
       "QA for Search & Browse, the site's most important function, from discovery to deployment.",
       "Tested features that brought in £millions in new revenue: ratings & reviews, size finder, product recommendations and sponsored advertising.",
@@ -115,7 +115,7 @@ export const ROLES: Role[] = [
     ],
   },
   {
-    title: "QA Lead (Contract)", company: "Discovery+", dates: "May 2019 – May 2021",
+    title: "QA Lead (Contract)", company: "Discovery+", logo: "discovery", dates: "May 2019 – May 2021",
     points: [
       <>Test Lead for the Discovery+ US app on Apple TV from inception to its <a href={LINKS.discoveryLaunch} {...ext}>launch on 4 January 2021</a>, Discovery's first US direct-to-consumer app, now with 12M+ users.</>,
       <>discovery+ went on to form part of Warner Bros. Discovery's streaming business: 96.1 million subscribers across HBO, HBO Max and discovery+ by the end of 2022 (<a href={LINKS.wbdSubs} {...ext}>Variety</a>).</>,
@@ -123,7 +123,7 @@ export const ROLES: Role[] = [
     ],
   },
   {
-    title: "Junior QA → QA Lead", company: "Channel 4", c4: true, dates: "Nov 2014 – May 2019",
+    title: "Junior QA → QA Lead", company: "Channel 4", logo: "c4", dates: "Nov 2014 – May 2019",
     points: [
       "Promoted from junior QA to QA Lead over 5 years, leading a team of 6; built a testing framework that kept releases on time while daily views grew from 100,000 to 1,000,000.",
       <>Helped grow All 4 streaming views by 26% in 2018 to a record 915 million (<a href={LINKS.c4Results2018} {...ext}>2018 results</a>) and by 9% in 2019 to a record 995 million (<a href={LINKS.c4Report2019} {...ext}>2019 report</a>).</>,

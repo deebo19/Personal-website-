@@ -42,10 +42,37 @@ jobs:
           path: playwright-report/
           retention-days: 14
 
-  deploy:
-    # Only ship to the live site from main, and only when every test passed.
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+  python-e2e:
+    # Second, independent suite: Python + Playwright + Page Object Model, headless Chromium
     needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: site-build
+          path: build
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: qa/requirements.txt
+      - run: pip install -r qa/requirements.txt
+      - run: python -m playwright install --with-deps chromium
+      - name: Run POM suite (headless)
+        working-directory: qa
+        run: pytest
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: python-e2e-traces
+          path: qa/test-results/
+          retention-days: 14
+
+  deploy:
+    # Only ship to the live site from main, and only when both suites passed.
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    needs: [test, python-e2e]
     runs-on: ubuntu-latest
     environment:
       name: github-pages

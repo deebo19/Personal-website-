@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBriefcase, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
 import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component';
 import 'react-vertical-timeline-component/style.min.css';
-import { MetaLogo, Channel4Logo } from './Logos';
+import { CompanyLogo } from './Logos';
 import { ROLES, EDUCATION } from '../data';
 import '../assets/styles/Timeline.scss';
 
@@ -28,7 +28,7 @@ function Timeline() {
             >
               <h3 className="vertical-timeline-element-title">{role.title}</h3>
               <h4 className="vertical-timeline-element-subtitle company">
-                {role.meta && <MetaLogo/>}{role.c4 && <Channel4Logo/>} {role.company}
+                <CompanyLogo logo={role.logo}/> {role.company}
               </h4>
               <ul className="role-points">
                 {role.points.map((p, i) => <li key={i}>{p}</li>)}
