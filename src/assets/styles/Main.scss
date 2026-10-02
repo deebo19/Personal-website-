@@ -3,6 +3,7 @@
 }
 
 .about-section {
+    overflow: hidden;
     display: flex;
     gap: 40px;
     justify-content: space-between;
@@ -158,6 +159,37 @@
 .about-section .image-wrapper {
     z-index: 2;
     flex-shrink: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .avatar {
+        position: relative;
+        z-index: 1;
+    }
+
+    // Big Meta mark behind the avatar, faded into the background
+    .avatar-backdrop {
+        position: absolute;
+        z-index: 0;
+        width: 540px;
+        max-width: none;
+        height: auto;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -46%);
+        opacity: .38;
+        filter: blur(1.5px) drop-shadow(0 0 40px rgba(0, 129, 251, .55));
+        -webkit-mask-image: radial-gradient(closest-side, black 55%, transparent 100%);
+        mask-image: radial-gradient(closest-side, black 55%, transparent 100%);
+        pointer-events: none;
+    }
+}
+
+.light-mode .about-section .image-wrapper .avatar-backdrop {
+    opacity: .3;
+    filter: blur(1px);
 }
 
 .about p {
@@ -264,6 +296,11 @@
 
         .about-section .image-wrapper .avatar {
             height: 300px;
+        }
+
+        .about-section .image-wrapper .avatar-backdrop {
+            width: 360px;
+            max-width: 100%;
         }
 
         .hero-stats {

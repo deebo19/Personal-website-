@@ -3,7 +3,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import EmailIcon from '@mui/icons-material/Email';
 import avatar from '../assets/images/avatar.png';
-import { MetaLogo, Channel4Logo } from './Logos';
+import { MetaLogo, Channel4Logo, MetaBackdrop } from './Logos';
 import { LINKS, PROFILE, STATS } from '../data';
 import '../assets/styles/Main.scss';
 
@@ -44,6 +44,7 @@ function Main() {
           </div>
         </div>
         <div className="image-wrapper">
+          <MetaBackdrop />
           <img className="avatar" src={avatar} width="244" height="775" alt="Adeeb's 3D avatar" />
         </div>
       </div>
