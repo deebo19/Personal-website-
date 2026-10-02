@@ -96,3 +96,34 @@
         .project-banner .banner-stat, .project-featured .banner-stat { font-size: 2.6em; }
     }
 }
+
+.case-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 30px;
+
+    button {
+        font: inherit;
+        font-weight: 700;
+        font-size: .9em;
+        padding: 7px 16px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, .35);
+        background: transparent;
+        color: white;
+        cursor: pointer;
+    }
+
+    button[aria-pressed="true"] { background: #5000ca; border-color: #5000ca; }
+    button:hover { border-color: #b79cff; }
+    button:focus-visible { outline: 2px solid #b79cff; outline-offset: 2px; }
+
+    .case-count { font-family: 'Space Mono', monospace; font-size: .8em; opacity: .8; margin-left: 6px; }
+}
+
+.light-mode .case-filter {
+    button { color: #0d1116; border-color: rgba(0, 0, 0, .3); }
+    button[aria-pressed="true"] { color: white; }
+}

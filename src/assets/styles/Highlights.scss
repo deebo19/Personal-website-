@@ -1,0 +1,112 @@
+.highlights-container {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5% 10% 0;
+    text-align: left;
+}
+
+.reel {
+    position: relative;
+    border-radius: 14px;
+    overflow: hidden;
+    padding: 36px 40px 24px;
+    background:
+        radial-gradient(700px 300px at 85% 0%, rgba(199, 125, 255, .45), transparent 60%),
+        linear-gradient(135deg, #1a0a45 0%, #3a0a9a 55%, #5000ca 100%);
+    color: white;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+
+    p, h3, span, button { color: white; }
+}
+
+.reel-slide {
+    flex: 1;
+    animation: reel-in .5s ease-out;
+
+    .reel-when { font-family: 'Space Mono', monospace; font-size: .9em; opacity: .85; margin: 0; }
+    .reel-where {
+        display: flex; align-items: center; margin: 6px 0 0;
+        font-weight: 700; font-size: 1.1em;
+        .logo { width: 1.3em; height: 1.3em; }
+        .logo-meta { fill: #8cc2ff; }
+        .logo-selfridges { height: .9em; }
+    }
+    .reel-headline { font-size: 2.2em; margin: 14px 0 10px; line-height: 1.15; }
+    .reel-detail { font-size: 1.1em; max-width: 720px; line-height: 1.55; margin: 0; opacity: .92; }
+}
+
+@keyframes reel-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+}
+
+.reel-progress {
+    height: 3px;
+    background: rgba(255, 255, 255, .2);
+    border-radius: 3px;
+    margin: 26px 0 16px;
+    overflow: hidden;
+
+    span { display: block; height: 100%; width: 0; background: white; }
+    span.is-playing { animation-name: reel-progress; animation-timing-function: linear; animation-fill-mode: forwards; }
+}
+
+@keyframes reel-progress { to { width: 100%; } }
+
+.reel-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.reel-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, .5);
+    background: rgba(0, 0, 0, .2);
+    cursor: pointer;
+
+    &:hover { background: rgba(255, 255, 255, .15); }
+    &:focus-visible { outline: 2px solid white; outline-offset: 2px; }
+}
+
+.reel-play { width: 48px; height: 48px; background: white; svg { color: #3a0a9a; } }
+.reel-play:hover { background: #e9ddff; }
+
+.reel-dots {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+    margin: 0 0 0 12px;
+    padding: 0;
+
+    button {
+        width: 10px; height: 10px; padding: 0;
+        border-radius: 50%;
+        border: 1px solid white;
+        background: transparent;
+        cursor: pointer;
+    }
+    button[aria-current="true"] { background: white; }
+}
+
+.reel-counter { font-family: 'Space Mono', monospace; font-size: .85em; margin-left: auto; opacity: .85; }
+
+@media (max-width: 700px) {
+    .highlights-container { padding: 10% 5% 0; }
+    .reel { padding: 26px 22px 20px; }
+    .reel-slide .reel-headline { font-size: 1.6em; }
+    .reel-dots { margin-left: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reel-slide { animation: none; }
+    .reel-progress span.is-playing { animation: none; width: 100%; }
+}

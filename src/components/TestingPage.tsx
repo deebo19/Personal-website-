@@ -2,6 +2,8 @@ import React from "react";
 import { SNIPPETS } from "../generated/snippets";
 import '../assets/styles/TestingPage.scss';
 
+const REPO = process.env.REACT_APP_REPO_URL;
+
 const PIPELINE = [
   { step: "Push", detail: "Any commit to any branch starts the pipeline." },
   { step: "Build", detail: "React production build, with warnings treated as errors." },
@@ -20,15 +22,24 @@ const TREE = `qa/
 │   ├── home_page.py       # sections, case studies, contact
 │   ├── testing_page.py    # this page
 │   └── components/        # reusable parts shared by pages
-│       ├── navigation.py  # links, theme toggle, mobile menu
-│       ├── hero.py        # title, tagline, company cards, images
-│       └── timeline.py    # career history
+│       ├── navigation.py      # links, theme toggle, mobile menu
+│       ├── hero.py            # title, tagline, company cards, images
+│       ├── highlights.py      # "Career in 60 seconds" reel
+│       ├── case_studies.py    # cards + company filter
+│       ├── timeline.py        # career history
+│       ├── contact.py         # email, copy, save as PDF
+│       └── feedback_form.py   # rating, validation, prepared email
 └── tests/                 # tests only ever talk to page objects
     ├── test_hero.py
+    ├── test_highlights.py
+    ├── test_case_study_filter.py
+    ├── test_feedback.py
+    ├── test_cv_tools.py       # copy email, PDF, theme memory, back to top, SEO data
     ├── test_navigation.py
     ├── test_content.py
     ├── test_theme.py
     ├── test_health.py
+    ├── test_seo.py
     └── test_testing_page.py`;
 
 const RUN = `# 1. Build the site (the suite tests the production build)
@@ -49,9 +60,14 @@ pytest -m "not mobile"               # skip the emulated-phone tests
 pytest -n auto                       # in parallel (pip install pytest-xdist)
 pytest --headed --slowmo 300         # watch it run in a visible browser
 pytest --browser firefox             # or webkit
-QA_BASE_URL=https://deebo19.github.io/Personal-website- pytest   # against the live site`;
+QA_BASE_URL=${process.env.REACT_APP_SITE_URL} pytest   # against the live site`;
 
 const COVERAGE = [
+  ["Highlight reel", "Starts paused; next/previous wrap; dots jump; autoplay every 8s using Playwright's fake clock; pauses; stops at the end; replays"],
+  ["Feedback form", "Required rating and message, optional name/email, email format, focus on first error, prepared email decoded and checked, copy, reset"],
+  ["Case study filter", "Each company shows only its studies with the right count; All restores 7; pressed state"],
+  ["CV tools", "Copy email to clipboard, Save as PDF opens print, print layout is a clean CV, PDF is a few pages, theme remembered, back to top"],
+  ["SEO", "Title, description, keywords, social preview tags, canonical link and schema.org Person data"],
   ["Hero", "Title, single h1, job title, tagline; me and my avatar side by side on the same floor line"],
   ["Company cards", "Four companies in order, each with a well-formed figure, a label and an https source"],
   ["Navigation", "Every link targets a real section; clicking scrolls it into view; mobile menu opens and closes"],
@@ -106,11 +122,26 @@ function TestingPage() {
       </section>
 
       <section>
+        <h2>Bugs the suite caught while I built it</h2>
+        <ul className="caught">
+          <li><strong>Hidden text:</strong> timeline entries stay hidden until scrolled into view, so <code>inner_text()</code> read them as empty. The page object now uses <code>text_content()</code>.</li>
+          <li><strong>Styled text:</strong> case study tags are uppercased with CSS, so <code>inner_text()</code> returned "META · LIVE LAUNCH". Same fix.</li>
+          <li><strong>A test that tested itself:</strong> a stubbed <code>window.print</code> was called twice. The string passed to <code>evaluate()</code> ended in a function, which Playwright then <em>called</em>. Wrapped in <code>() =&gt; {"{ … }"}</code>.</li>
+          <li><strong>Invisible text:</strong> screenshots showed dark-on-dark labels in the new features; the app now sets a base text colour for each theme.</li>
+          <li><strong>Print:</strong> the PDF dropped case studies when a filter was active; printing now resets the filter first.</li>
+          <li><strong>SEO:</strong> the HTML had a keyword-rich page title, but the app overwrote it at runtime with a shorter one. A new SEO test caught it on its first run.</li>
+        </ul>
+      </section>
+
+      <section>
         <h2>The code</h2>
         <p>These are the real files from the repository, copied in at build time.</p>
         <Code title="qa/pages/base_page.py">{SNIPPETS["qa/pages/base_page.py"]}</Code>
         <Code title="qa/pages/components/hero.py">{SNIPPETS["qa/pages/components/hero.py"]}</Code>
         <Code title="qa/tests/test_hero.py">{SNIPPETS["qa/tests/test_hero.py"]}</Code>
+        <Code title="qa/pages/components/feedback_form.py">{SNIPPETS["qa/pages/components/feedback_form.py"]}</Code>
+        <Code title="qa/tests/test_feedback.py">{SNIPPETS["qa/tests/test_feedback.py"]}</Code>
+        <Code title="qa/tests/test_highlights.py: controlling time with page.clock">{SNIPPETS["qa/tests/test_highlights.py"]}</Code>
         <Code title="qa/conftest.py">{SNIPPETS["qa/conftest.py"]}</Code>
       </section>
 
@@ -140,8 +171,8 @@ function TestingPage() {
           </tbody>
         </table>
         <p>
-          Source: <a href="https://github.com/deebo19/Personal-website-/tree/main/qa" target="_blank" rel="noreferrer">qa/ on GitHub</a>
-          {" "}· Latest runs: <a href="https://github.com/deebo19/Personal-website-/actions" target="_blank" rel="noreferrer">GitHub Actions</a>
+          Source: <a href={`${REPO}/tree/main/qa`} target="_blank" rel="noreferrer">qa/ on GitHub</a>
+          {" "}· Latest runs: <a href={`${REPO}/actions`} target="_blank" rel="noreferrer">GitHub Actions</a>
         </p>
       </section>
     </div>

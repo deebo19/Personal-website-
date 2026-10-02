@@ -7,3 +7,6 @@ export { default as Timeline } from "./Timeline";
 export { default as Project } from "./Project";
 export { default as Contact } from "./Contact";
 export { default as TestingPage } from "./TestingPage";
+export { default as Highlights } from "./Highlights";
+export { default as Feedback } from "./Feedback";
+export { default as BackToTop } from "./BackToTop";

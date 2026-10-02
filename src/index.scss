@@ -20,6 +20,7 @@ code {
 
 .main-container {
   position: relative;
+  color: white;
   font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   background-color: #0d1116;
 
@@ -100,6 +101,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
 .light-mode {
   background-color: #f8f9fa;
+  color: #0d1116;
 
   .navigation-bar {
     background-color: #f8f9fa;
@@ -236,3 +238,76 @@ h3, .vertical-timeline-element-title { font-weight: 500 !important; }
 }
 
 .vertical-timeline-element-subtitle .logo-selfridges { height: .85em; margin-right: 8px; }
+
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 1200;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 0;
+  cursor: pointer;
+  background: #5000ca;
+  color: white;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, .4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg { color: white; }
+  &:hover { background: #6a1cff; }
+  &:focus-visible { outline: 3px solid #b79cff; outline-offset: 3px; }
+}
+
+.print-only { display: none; }
+
+/* "Save CV as PDF": a clean, ink-friendly print layout */
+@media print {
+  @page { margin: 14mm; }
+
+  #navigation, .MuiDrawer-root, .back-to-top, #highlights, #feedback, .case-filter, #approach,
+  .skills-container .skill > svg, .chip-title,
+  .image-wrapper, .social_icons, .mobile_social_icons, .stat-source, .contact-buttons,
+  .contact-hint, footer .credit, .project-banner { display: none !important; }
+
+  .main-container, .main-container * {
+    background: white !important;
+    color: #111 !important;
+    -webkit-text-fill-color: #111 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .main-container .logo-selfridges { background-color: #111 !important; }
+
+  .about-section { min-height: 0 !important; padding: 0 !important; display: block !important; }
+  .skills-container, .projects-container, .items-container { padding: 6mm 0 0 !important; }
+  .skills-container .skills-grid { display: block !important; }
+  .skills-container .skill { margin-bottom: 4mm; }
+  .skills-container .skill p { margin: 1mm 0; }
+  .flex-chips { line-height: 1.4 !important; }
+  .flex-chips .MuiChip-root { height: auto !important; margin: 0 4px 2px 0 !important; border: 1px solid #ccc !important; }
+  .flex-chips .MuiChip-label { padding: 0 6px !important; font-size: 9pt !important; }
+  .projects-container .projects-grid { grid-gap: 5mm !important; }
+  .print-only { display: block !important; font-weight: 700; }
+  .vertical-timeline { padding: 0 !important; }
+  .vertical-timeline-element { margin: 0 0 4mm !important; }
+  .vertical-timeline-element-content { padding: 3mm 0 !important; }
+  .about-section::before { display: none !important; }
+  .container { margin-top: 0 !important; }
+  .company-stats { grid-template-columns: repeat(4, 1fr) !important; }
+  .company-stats li, .stage, .project { break-inside: avoid; border: 1px solid #ccc !important; }
+
+  /* The timeline normally reveals entries on scroll; show them all on paper */
+  .vertical-timeline-element-content, .vertical-timeline-element-icon { visibility: visible !important; animation: none !important; }
+  .vertical-timeline::before { display: none !important; }
+  .vertical-timeline-element-icon { display: none !important; }
+  .vertical-timeline-element-content { margin-left: 0 !important; width: 100% !important; }
+  .vertical-timeline-element-content .vertical-timeline-element-date { position: static !important; display: block; }
+
+  a { text-decoration: underline; }
+}

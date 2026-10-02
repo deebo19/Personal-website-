@@ -9,6 +9,9 @@ import {
   Navigation,
   Footer,
   TestingPage,
+  Highlights,
+  Feedback,
+  BackToTop,
 } from "./components";
 import FadeIn from './components/FadeIn';
 import './index.scss';
@@ -18,13 +21,17 @@ import './index.scss';
 const routeFromHash = () => (window.location.hash.startsWith('#/testing') ? 'testing' : 'home');
 
 function App() {
-  const [mode, setMode] = useState<string>('dark');
+  // Remember the visitor's theme between visits (storage can be unavailable, e.g. private mode)
+  const [mode, setMode] = useState<string>(() => {
+    try { return localStorage.getItem('theme') === 'light' ? 'light' : 'dark'; } catch { return 'dark'; }
+  });
   const [route, setRoute] = useState<string>(routeFromHash());
 
   const handleModeChange = () => setMode(mode === 'dark' ? 'light' : 'dark');
 
   useEffect(() => {
     document.documentElement.dataset.theme = mode;
+    try { localStorage.setItem('theme', mode); } catch { /* ignore */ }
   }, [mode]);
 
   useEffect(() => {
@@ -36,7 +43,7 @@ function App() {
   useEffect(() => {
     document.title = route === 'testing'
       ? 'How I test this site — Adeeb Hussain'
-      : 'Adeeb Hussain — AI QA Engineering Lead';
+      : 'Adeeb Hussain — AI QA Engineering Lead | Test Automation & Quality Engineering';
     if (route === 'testing') {
       window.scrollTo(0, 0);
       return;
@@ -55,15 +62,18 @@ function App() {
         ) : (
           <FadeIn transitionDuration={700}>
             <Main/>
+            <Highlights/>
             <Expertise/>
             <Project/>
             <Timeline/>
             <Approach/>
             <Contact/>
+            <Feedback/>
           </FadeIn>
         )}
       </main>
       <Footer />
+      <BackToTop />
     </div>
   );
 }

@@ -6,7 +6,7 @@ from pages.home_page import HomePage
 
 @pytest.mark.regression
 def test_all_case_studies_are_listed(home: HomePage):
-    expect(home.case_studies).to_have_count(7)
+    expect(home.case_studies.cards).to_have_count(7)
 
 
 @pytest.mark.regression
@@ -23,5 +23,5 @@ def test_approach_has_eight_stages_in_order(home: HomePage):
 
 @pytest.mark.smoke
 def test_recruiters_can_reach_me(home: HomePage):
-    expect(home.email_button).to_have_attribute("href", "mailto:adeebhussain2@hotmail.com")
-    expect(home.contact_linkedin).to_have_attribute("href", "https://www.linkedin.com/in/adeebhussain/")
+    expect(home.contact.email_button).to_have_attribute("href", "mailto:adeebhussain2@hotmail.com")
+    expect(home.contact.linkedin).to_have_attribute("href", "https://www.linkedin.com/in/adeebhussain/")

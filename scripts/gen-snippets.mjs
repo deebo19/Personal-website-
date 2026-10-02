@@ -6,6 +6,9 @@ const files = [
   "qa/pages/base_page.py",
   "qa/pages/components/hero.py",
   "qa/tests/test_hero.py",
+  "qa/pages/components/feedback_form.py",
+  "qa/tests/test_feedback.py",
+  "qa/tests/test_highlights.py",
   "qa/conftest.py",
   "qa/pytest.ini",
 ];

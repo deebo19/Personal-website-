@@ -1,7 +1,13 @@
+import json
+
 from playwright.sync_api import Locator
 
 from pages.base_page import BasePage
+from pages.components.case_studies import CaseStudies
+from pages.components.contact import Contact
+from pages.components.feedback_form import FeedbackForm
 from pages.components.hero import Hero
+from pages.components.highlights import Highlights
 from pages.components.timeline import Timeline
 
 
@@ -11,26 +17,23 @@ class HomePage(BasePage):
     def __init__(self, page, base_url):
         super().__init__(page, base_url)
         self.hero = Hero(page)
+        self.highlights = Highlights(page)
+        self.case_studies = CaseStudies(page)
         self.timeline = Timeline(page)
+        self.contact = Contact(page)
+        self.feedback = FeedbackForm(page)
+        self.back_to_top = page.get_by_role("button", name="Back to top")
 
     def section(self, section_id: str) -> Locator:
         return self.page.locator(f"#{section_id}")
 
     @property
-    def case_studies(self) -> Locator:
-        return self.page.locator("#projects article")
-
-    @property
     def approach_stages(self) -> Locator:
         return self.page.locator(".lifecycle .stage-num")
 
-    @property
-    def email_button(self) -> Locator:
-        return self.page.get_by_role("link", name="Email me")
-
-    @property
-    def contact_linkedin(self) -> Locator:
-        return self.section("contact").get_by_role("link", name="LinkedIn")
+    def structured_data(self) -> dict:
+        """The schema.org JSON-LD that search engines read."""
+        return json.loads(self.page.locator('script[type="application/ld+json"]').text_content())
 
     def local_asset_urls(self) -> list[str]:
         """Every same-origin link, stylesheet, script and image on the page."""

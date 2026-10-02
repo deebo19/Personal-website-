@@ -8,3 +8,5 @@ __pycache__/
 .pytest_cache/
 qa/test-results/
 .venv/
+public/robots.txt
+public/sitemap.xml

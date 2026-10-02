@@ -28,9 +28,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "prestart": "node scripts/gen-snippets.mjs",
+    "prestart": "node scripts/gen-snippets.mjs && node scripts/gen-seo.mjs",
     "start": "react-scripts start",
-    "prebuild": "node scripts/gen-snippets.mjs",
+    "prebuild": "node scripts/gen-snippets.mjs && node scripts/gen-seo.mjs",
     "build": "react-scripts build",
     "serve": "node tests/serve.mjs",
     "pretest": "npm run build",

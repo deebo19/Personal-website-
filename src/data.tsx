@@ -24,10 +24,12 @@ export const PROFILE = {
   tagline: "Shipping future tech with quality at speed using AI",
   intro: (
     <>
-      For 10+ years I've been at the heart of global web, mobile, TV and VR teams at <strong>Meta</strong>,{" "}
-      <strong>Discovery+</strong>, <strong>Selfridges</strong> and <strong>Channel 4</strong>, helping ship
-      multi-million-pound products used by millions. I champion shift-left testing, lead teams onshore and offshore,
-      and I'm now moving QA from manual to <strong>agentic, AI-driven testing</strong>.
+      QA Engineering Lead with 10+ years of <strong>test automation</strong>, <strong>test strategy</strong> and{" "}
+      <strong>quality engineering</strong> across web, mobile, smart TV, streaming and VR at <strong>Meta</strong>,{" "}
+      <strong>Discovery+</strong>, <strong>Selfridges</strong> and <strong>Channel 4</strong>, shipping
+      multi-million-pound products used by millions. I lead onshore and offshore QA teams, champion shift-left
+      testing, and I'm moving QA from manual to <strong>AI-driven, agentic testing</strong> with LLM-powered tools
+      like Claude Code.
     </>
   ),
 };
@@ -60,21 +62,21 @@ export const APPROACH = [
 export const EXPERTISE = [
   {
     icon: "lead",
-    title: "QA Leadership & Strategy",
-    text: "Leading onshore and offshore teams of 20+, hiring and onboarding QA leads, and driving OKRs and quality metrics with stakeholders. A big believer in shift-left: bugs found earlier are cheaper to fix.",
-    chips: ["Teams of 20+", "Onshore / offshore", "Hiring & onboarding", "OKRs & metrics", "Stakeholder reporting", "Budget prioritisation", "Shift-left", "Agile"],
+    title: "QA Leadership & Test Strategy",
+    text: "QA Lead and Test Lead for teams of 20+ onshore and offshore: test strategy and planning, risk-based testing, release management and UAT, hiring and onboarding QA leads, and driving OKRs and quality metrics with stakeholders. A big believer in shift-left: bugs found earlier are cheaper to fix.",
+    chips: ["QA leadership", "Test strategy", "Test planning", "Risk-based testing", "Shift-left", "Release management", "UAT", "Defect management", "Quality metrics & OKRs", "Stakeholder management", "Onshore / offshore teams", "Hiring & onboarding", "Agile / Scrum", "ISTQB"],
   },
   {
     icon: "ai",
-    title: "AI-Native & Automated Testing",
-    text: "Moving QA from manual to agentic: Claude Code running scheduled daily test executions, AI-generated test strategies and cases, and Claude skills and plugins that scale testing across orgs.",
-    chips: ["Agentic testing", "Claude Code", "Claude skills & plugins", "OpenClaw", "CodeceptJS", "Selenium", "JavaScript", "Python", "GitHub", "Jenkins", "AWS", "Jira", "Zephyr", "TestRail"],
+    title: "AI Testing & Test Automation",
+    text: "Moving QA from manual to agentic: AI agents built on Claude Code running scheduled daily test executions, LLM-assisted generation of test strategies, plans and cases, and Claude skills and plugins that scale testing across orgs. Hands-on with automation frameworks and CI/CD quality gates.",
+    chips: ["AI-driven testing", "Agentic testing", "AI agents", "LLM-assisted test generation", "Generative AI", "Claude Code", "Claude skills & plugins", "OpenClaw", "Test automation", "Automation frameworks", "Playwright", "Selenium", "CodeceptJS", "pytest", "Page Object Model", "Python", "JavaScript", "CI/CD", "GitHub Actions", "Jenkins", "AWS", "Jira", "Zephyr", "TestRail"],
   },
   {
     icon: "platforms",
-    title: "Multi-Platform Quality",
-    text: "End-to-end quality on every screen users touch, from VR worlds and smart TVs to mobile and web, including API, performance and analytics testing.",
-    chips: ["VR", "iOS", "Android", "Web", "Apple TV", "Smart TVs & STBs", "Consoles", "Chromecast", "Apple Watch", "Postman", "Charles Proxy", "Wireshark", "Lighthouse", "Sitespeed.io", "Google Analytics"],
+    title: "Multi-Platform & Non-Functional Quality",
+    text: "End-to-end quality on every screen users touch, from VR/XR worlds and OTT streaming on smart TVs to mobile apps, e-commerce and web: functional, regression and exploratory testing plus API, performance, accessibility and analytics testing.",
+    chips: ["VR / XR testing", "OTT & streaming", "Smart TVs & STBs", "Mobile testing (iOS, Android)", "Web & e-commerce", "Apple TV", "Consoles", "Chromecast", "Regression testing", "Exploratory testing", "API testing", "Postman", "Performance testing", "Lighthouse", "Sitespeed.io", "Accessibility (WCAG)", "Charles Proxy", "Wireshark", "Analytics testing"],
   },
 ];
 
@@ -199,3 +201,27 @@ export const CASE_STUDIES: CaseStudy[] = [
     link: { href: LINKS.all4Chromecast, label: "Read Channel 4's announcement" },
   },
 ];
+
+// "Career in 60 seconds": one slide per milestone, ~8 seconds each.
+export type Highlight = { when: string; where: string; logo?: "meta" | "c4" | "discovery" | "selfridges"; headline: string; detail: string };
+
+export const HIGHLIGHTS: Highlight[] = [
+  { when: "2014", where: "Sparta Global", headline: "Started in software testing",
+    detail: "Intensive testing academy; ISTQB Foundation passed with 90%." },
+  { when: "2014 – 2019", where: "Channel 4", logo: "c4", headline: "Junior QA to QA Lead",
+    detail: "Led a team of 6 while daily views grew from 100k to 1M, through the All 4 launch and Chromecast." },
+  { when: "2019 – 2021", where: "Discovery+", logo: "discovery", headline: "Launched a streaming app from scratch",
+    detail: "Test Lead for discovery+ on Apple TV, live on 4 January 2021; now 12M+ users." },
+  { when: "2021 – 2024", where: "Selfridges", logo: "selfridges", headline: "Quality for the money-maker",
+    detail: "Search & Browse features that brought in £millions in new revenue." },
+  { when: "2024 – 2025", where: "Meta", logo: "meta", headline: "Leading 20+ QAs",
+    detail: "Onshore and offshore teams; Workplace testing for 10 million users." },
+  { when: "Dec 2025", where: "Meta Horizon", logo: "meta", headline: "Coldplay, live in VR",
+    detail: "QA Lead for the immersive concert launching the Horizon Arena: 20,000 attendees, demos for Mark Zuckerberg." },
+  { when: "Now", where: "Meta", logo: "meta", headline: "Taking QA agentic",
+    detail: "Moving teams from manual to AI-driven testing with Claude Code, skills and plugins." },
+];
+
+export const SLIDE_SECONDS = 8;
+
+export const CONTACT_EMAIL = "adeebhussain2@hotmail.com";

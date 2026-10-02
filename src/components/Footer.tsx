@@ -11,7 +11,7 @@ function Footer() {
         <a href={LINKS.github} target="_blank" rel="noreferrer" aria-label="GitHub"><GitHubIcon/></a>
         <a href={LINKS.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedInIcon/></a>
       </div>
-      <p>© {new Date().getFullYear()} Adeeb Hussain · Covered by its own <a href="https://github.com/deebo19/Personal-website-/actions" target="_blank" rel="noreferrer">automated test suite</a></p>
+      <p>© {new Date().getFullYear()} Adeeb Hussain · Covered by its own <a href={`${process.env.REACT_APP_REPO_URL}/actions`} target="_blank" rel="noreferrer">automated test suite</a></p>
       <p className="credit">Design based on the open-source template by <a href="https://github.com/yujisatojr/react-portfolio-template" target="_blank" rel="noreferrer">Yuji Sato</a> (MIT)</p>
     </footer>
   );
