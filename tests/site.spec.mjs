@@ -6,7 +6,7 @@ test.beforeEach(async ({ page }) => {
 });
 
 test("page has a title and main heading", async ({ page }) => {
-  await expect(page).toHaveTitle(/QA Lead/);
+  await expect(page).toHaveTitle(/Adeeb Hussain.*QA/);
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
 });
 

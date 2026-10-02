@@ -19,7 +19,7 @@ npm test         # run the full test suite (desktop + mobile)
 |---|---|
 | Title, heading, all 8 lifecycle stages present | Content regressions |
 | Nav anchors resolve to real sections | Broken navigation |
-| No local link or asset returns 404 | Broken résumé link, missing images |
+| No local link or asset returns 404 | Broken links, missing images |
 | Theme toggle and mobile menu work | Interactive behaviour |
 | No horizontal scroll on mobile | Responsive layout |
 | No console errors | JS regressions |
@@ -42,7 +42,6 @@ That's a quality gate, the same way I'd set one up for a product team.
 
 Search `index.html` for `TODO`, `Your Name`, `X`, `XX%` and `Company Name`, then:
 
-- Replace `assets/resume.pdf` with your real résumé (keep the filename).
 - Update the email and LinkedIn links in the Contact section.
 - Use real, defensible numbers in the hero stats and experience bullets.
 - Write 2 or 3 case studies in the form problem → approach → measurable result.

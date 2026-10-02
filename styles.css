@@ -136,7 +136,7 @@ h3 { font-size: 1.1rem; }
 .deliverable .mono { color: var(--accent); }
 
 /* Skills */
-.skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(185px, 1fr)); gap: 16px; }
 .skill-card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 20px; box-shadow: var(--shadow);
@@ -160,7 +160,7 @@ h3 { font-size: 1.1rem; }
 .role ul { color: var(--muted); padding-left: 20px; margin: 8px 0 0; }
 
 /* Case studies */
-.cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
 .card {
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 24px; box-shadow: var(--shadow);
@@ -171,6 +171,8 @@ h3 { font-size: 1.1rem; }
 .card dd { margin: 2px 0 0; color: var(--muted); }
 
 .certs { padding-left: 20px; color: var(--muted); }
+.certs li { margin-bottom: 6px; }
+.certs strong { color: var(--text); font-weight: 600; }
 
 /* Contact */
 .contact { text-align: center; }
@@ -181,7 +183,6 @@ h3 { font-size: 1.1rem; }
 
 /* Responsive */
 @media (max-width: 900px) {
-  .skills-grid { grid-template-columns: repeat(2, 1fr); }
   .cards { grid-template-columns: 1fr; }
   .stats { grid-template-columns: repeat(2, 1fr); }
 }
