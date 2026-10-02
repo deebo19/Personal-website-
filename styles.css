@@ -165,6 +165,7 @@ h3 { font-size: 1.1rem; }
   background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
   padding: 24px; box-shadow: var(--shadow);
 }
+.card-featured { grid-column: 1 / -1; border-top: 4px solid var(--accent); }
 .card-tag { color: var(--accent); font-size: .8rem; margin: 0 0 8px; text-transform: uppercase; }
 .card dl { margin: 0; }
 .card dt { font-weight: 600; font-size: .85rem; margin-top: 12px; }
