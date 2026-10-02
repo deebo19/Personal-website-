@@ -16,8 +16,8 @@
 
     h3 { font-size: 1.4em; margin: 18px 0 8px; }
     dl { margin: 0; }
-    dt { font-weight: 700; font-size: .85em; margin-top: 10px; font-family: "Lato", sans-serif; }
-    dd { margin: 2px 0 0; line-height: 1.5; font-size: .95em; opacity: .9; font-family: "Lato", sans-serif; }
+    dt { font-weight: 700; font-size: .85em; margin-top: 10px; font-family: "Space Grotesk", sans-serif; }
+    dd { margin: 2px 0 0; line-height: 1.5; font-size: .95em; opacity: .9; font-family: "Space Grotesk", sans-serif; }
     .project-link { display: inline-block; margin-top: 12px; font-weight: 700; }
 }
 
@@ -39,7 +39,7 @@
         radial-gradient(600px 240px at 90% 0%, rgba(199, 125, 255, .55), transparent 60%),
         linear-gradient(135deg, #2a0a6b 0%, #5000ca 55%, #9b4dff 100%);
 
-    span { color: white; font-family: "Lato", sans-serif; }
+    span { color: white; font-family: "Space Grotesk", sans-serif; }
 
     .banner-tag {
         position: absolute;
@@ -47,7 +47,7 @@
         left: 20px;
         display: flex;
         align-items: center;
-        font-family: 'Courier Prime', monospace;
+        font-family: 'Space Mono', monospace;
         font-size: .8em;
         text-transform: uppercase;
         letter-spacing: .06em;

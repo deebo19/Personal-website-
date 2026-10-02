@@ -72,110 +72,148 @@
     }
 
     h1 {
-        font-size: 5em;
+        font-size: 3.6em;
         line-height: 1.05;
-        margin-block-start: 0px;
+        letter-spacing: -.01em;
+        margin-block-start: 6px;
         margin-block-end: 0px;
     }
 
-    .eyebrow {
-        font-family: 'Courier Prime', monospace;
-        font-size: 1em;
-        color: #b79cff;
-        margin-top: 24px;
-        margin-bottom: 8px;
+    .job-title {
+        font-family: "Space Grotesk", sans-serif;
+        font-size: 1.55em;
+        font-weight: 700;
+        margin-top: 14px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        column-gap: .35em;
+
+        .job-company {
+            display: inline-flex;
+            align-items: center;
+            color: #4a9dff;
+        }
+
+        .logo { width: 1.25em; height: 1.25em; margin-right: 6px; }
+        .job-location { opacity: .75; font-weight: 500; }
     }
 
     .tagline {
-        font-size: 1.6em;
-        margin-top: 8px;
+        font-family: "Unbounded", sans-serif;
+        font-weight: 500;
+        font-size: 1.15em;
+        line-height: 1.4;
+        margin-top: 14px;
+        background: linear-gradient(90deg, #b79cff, #ff7ad9);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: #c9b3ff;
+        -webkit-text-fill-color: transparent;
     }
 
     .intro {
-        font-size: 1.05em;
+        font-size: 1.02em;
         line-height: 1.6;
         max-width: 640px;
-        margin-top: 18px;
+        margin-top: 16px;
         opacity: .9;
+    }
+
+    p.company-stats-label {
+        font-family: "Space Mono", monospace;
+        font-size: .8rem;
+        text-transform: uppercase;
+        letter-spacing: .1em;
+        opacity: .8;
+        margin-top: 26px;
+        margin-bottom: 10px;
     }
 }
 
-.hero-stats {
+.company-stats {
     list-style: none;
     padding: 0;
-    margin: 28px 0 0;
+    margin: 0;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
-    max-width: 720px;
+    max-width: 760px;
 
     li {
         display: flex;
         flex-direction: column;
         padding: 14px 16px;
-        border-radius: 8px;
+        border-radius: 10px;
         background: rgba(255, 255, 255, .06);
         border: 1px solid rgba(255, 255, 255, .12);
         backdrop-filter: blur(6px);
     }
 
-    .stat-num {
-        font-size: 1.6em;
-        font-weight: 900;
+    li.is-meta { border-color: rgba(74, 157, 255, .55); box-shadow: 0 0 24px rgba(0, 129, 251, .25); }
+
+    .company-name {
+        display: flex;
+        align-items: center;
+        font-family: "Space Grotesk", sans-serif;
+        font-weight: 700;
+        font-size: .95em;
         color: white;
-        font-family: "Lato", sans-serif;
+        margin-bottom: 6px;
+
+        .logo { width: 1.3em; height: 1.3em; }
+    }
+
+    .stat-num {
+        font-family: "Unbounded", sans-serif;
+        font-size: 1.5em;
+        font-weight: 700;
+        color: white;
+        line-height: 1.1;
     }
 
     .stat-label {
-        font-size: .8em;
+        font-family: "Space Grotesk", sans-serif;
+        font-size: .78em;
+        line-height: 1.35;
         color: rgba(255, 255, 255, .8);
-        font-family: "Lato", sans-serif;
+        margin-top: 4px;
+        flex-grow: 1;
+    }
+
+    .stat-source {
+        font-family: "Space Mono", monospace;
+        font-size: .7em;
+        margin-top: 8px;
+        color: #b79cff;
+        text-decoration: underline;
+        text-underline-offset: 2px;
     }
 }
 
-.light-mode .about-section .content .eyebrow { color: #5000ca; }
+.visually-hidden {
+    position: absolute !important;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
 
-.light-mode .hero-stats {
-    li { background: rgba(255, 255, 255, .7); border-color: rgba(0, 0, 0, .1); }
+.dark-mode .company-stats .logo-meta { fill: #4a9dff; }
+
+.light-mode .about-section .content {
+    .job-company { color: #0064e0; }
+    .tagline { background: linear-gradient(90deg, #5000ca, #b0127a); -webkit-background-clip: text; background-clip: text; color: #5000ca; }
+}
+
+.light-mode .company-stats {
+    li { background: rgba(255, 255, 255, .75); border-color: rgba(0, 0, 0, .1); }
+    li.is-meta { border-color: rgba(0, 100, 224, .45); }
+    .company-name, .stat-num { color: #0d1116; }
     .stat-num { color: #5000ca; }
     .stat-label { color: #3a3f4a; }
+    .stat-source { color: #5000ca; }
 }
-
-.logo-strip {
-    margin-top: 28px;
-
-    p.logo-strip-label {
-        font-family: 'Courier Prime', monospace;
-        font-size: .85rem;
-        text-transform: uppercase;
-        letter-spacing: .08em;
-        opacity: .8;
-        margin-bottom: 10px;
-    }
-
-    .logo-list {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 10px 32px;
-        align-items: center;
-
-        li {
-            display: flex;
-            align-items: center;
-            font-family: "Lato", sans-serif;
-            font-weight: 900;
-            font-size: 1.2em;
-            color: rgba(255, 255, 255, .85);
-        }
-
-        .logo { width: 1.4em; height: 1.4em; }
-    }
-}
-
-.light-mode .logo-strip .logo-list li { color: #2a2f3a; }
 
 .about-section .image-wrapper .avatar {
     width: auto;
@@ -268,7 +306,7 @@
 
     @media (max-width:768px) {
         .about-section h1 {
-            font-size: 3.2em !important;
+            font-size: 2.3em !important;
             text-align: left;
         }
 
@@ -331,8 +369,10 @@
             max-width: 100%;
         }
 
-        .hero-stats {
+        .company-stats {
             grid-template-columns: repeat(2, minmax(0, 1fr));
         }
+
+        .about-section .content .job-title { font-size: 1.2em; }
     }
 }

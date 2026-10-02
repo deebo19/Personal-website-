@@ -5,7 +5,7 @@ html {
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+  font-family: "Space Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -35,7 +35,7 @@ a:hover {
 
 p, a, h1, h2, h3, h4, h5, label, button {
   color: white;
-  font-family: "Lato", sans-serif;
+  font-family: "Space Grotesk", sans-serif;
 }
 
 .navigation-bar {
@@ -44,7 +44,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
   button {
     font-size: 1.1rem;
-    font-family: "Lato", sans-serif;
+    font-family: "Space Grotesk", sans-serif;
     text-transform: initial;
     padding: 6px 10px;
   }
@@ -57,7 +57,7 @@ p, a, h1, h2, h3, h4, h5, label, button {
 .navigation-bar-responsive {
   span, p {
     color: #0d1116;
-    font-family: "Lato", sans-serif;
+    font-family: "Space Grotesk", sans-serif;
   }
 }
 
@@ -196,4 +196,18 @@ p, a, h1, h2, h3, h4, h5, label, button {
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+}
+
+/* Distinctive display face for every heading */
+h1, h2, h3,
+.vertical-timeline-element-title,
+.banner-stat {
+  font-family: "Unbounded", "Space Grotesk", sans-serif !important;
+  letter-spacing: -.01em;
+}
+
+h3, .vertical-timeline-element-title { font-weight: 500 !important; }
+
+.MuiButton-root, .MuiListItemText-primary, .MuiChip-label {
+  font-family: "Space Grotesk", sans-serif !important;
 }

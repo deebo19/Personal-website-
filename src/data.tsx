@@ -18,8 +18,10 @@ export const LINKS = {
 
 export const PROFILE = {
   name: "Adeeb Hussain",
-  title: "AI Native QA Engineering Lead",
+  title: "AI QA Engineering Lead",
+  company: "Meta",
   location: "London",
+  tagline: "Shipping future tech with quality at speed using AI",
   intro: (
     <>
       For 10+ years I've been at the heart of global web, mobile, TV and VR teams at <strong>Meta</strong>,{" "}
@@ -30,11 +32,18 @@ export const PROFILE = {
   ),
 };
 
-export const STATS = [
-  { value: "10+", label: "years in QA" },
-  { value: "20+", label: "QAs led at Meta" },
-  { value: "20,000", label: "attendees at Coldplay in Meta Horizon" },
-  { value: "12M+", label: "Discovery+ users, tested from inception" },
+// Reach of the products I've tested. Each figure links to its public source.
+export type CompanyStat = { company: string; logo?: "meta" | "c4"; value: string; label: string; source: string };
+
+export const COMPANY_STATS: CompanyStat[] = [
+  { company: "Meta", logo: "meta", value: "3.5B+", label: "daily active people across Meta's apps (Dec 2025)",
+    source: "https://www.redlandscommunitynews.com/online_features/press_releases/meta-reports-fourth-quarter-and-full-year-2025-results/article_dcc1ae8b-b667-54d0-832d-86cdd8b43fca.html" },
+  { company: "Discovery+", value: "22M", label: "streaming subscribers by end of 2021, mostly discovery+",
+    source: "https://www.sec.gov/Archives/edgar/data/1437107/000143710722000026/a20211231-ex991pressrelease.htm" },
+  { company: "Selfridges", value: "8M+", label: "monthly visits to selfridges.com (Dec 2025)",
+    source: "https://www.semrush.com/website/selfridges.com/overview/" },
+  { company: "Channel 4", logo: "c4", value: "1.9B+", label: "streaming views in 2025",
+    source: "https://www.channel4.com/corporate/performance/channel-4-annual-report-2024" },
 ];
 
 export const APPROACH = [

@@ -1,5 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+// Self-hosted fonts (no third-party requests)
+import '@fontsource/unbounded/500.css';
+import '@fontsource/unbounded/700.css';
+import '@fontsource/space-grotesk/400.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/space-grotesk/700.css';
+import '@fontsource/space-mono/400.css';
+import '@fontsource/space-mono/700.css';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';

@@ -24,6 +24,7 @@ npm test         # builds, then runs the full test suite (desktop + mobile)
 | Check | Why it matters |
 |---|---|
 | Title, single h1, avatar loads | Content and SEO regressions |
+| Job title, tagline, 4 company cards each with a source link | Hero accuracy |
 | 7 roles, 7 case studies, all 8 approach stages | Missing content |
 | Nav links point to real sections | Broken navigation |
 | No local link or asset returns 404 | Broken files after a build |
