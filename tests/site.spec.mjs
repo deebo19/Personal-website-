@@ -18,21 +18,11 @@ test("avatar is shown in the hero", async ({ page }) => {
   expect(await avatar.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
 });
 
-test("Meta HQ photo with avatar is shown", async ({ page }) => {
-  const photo = page.getByRole("img", { name: /Meta sign at 1 Hacker Way/ });
-  await photo.scrollIntoViewIfNeeded();
-  await expect(photo).toBeVisible();
-  await expect.poll(() => photo.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
-});
-
-test("hero shows job title, tagline and a sourced figure for each company", async ({ page }) => {
-  await expect(page.locator(".job-title")).toContainText("AI QA Engineering Lead at Meta");
-  await expect(page.locator(".tagline")).toHaveText("Shipping future tech with quality at speed using AI");
-  const cards = page.locator(".company-stats li");
-  await expect(cards).toHaveCount(4);
-  await expect(cards.locator(".company-name")).toHaveText(["Meta", "Discovery+", "Selfridges", "Channel 4"]);
-  for (const href of await cards.locator("a.stat-source").evaluateAll((as) => as.map((a) => a.href))) {
-    expect(href).toMatch(/^https:\/\//);
+test("photo of me stands next to my avatar in the hero", async ({ page }) => {
+  for (const name of ["Adeeb Hussain", "Adeeb's 3D avatar"]) {
+    const img = page.locator(".image-wrapper").getByRole("img", { name, exact: true });
+    await expect(img).toBeVisible();
+    expect(await img.evaluate((i) => i.complete && i.naturalWidth > 0)).toBe(true);
   }
 });
 

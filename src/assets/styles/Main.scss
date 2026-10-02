@@ -9,7 +9,7 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 0px 15%;
+    padding: 0px 7%;
     min-height: 700px;
     position: relative;
     isolation: isolate;
@@ -49,6 +49,8 @@
 .about-section .content {
     text-align: left;
     z-index: 2;
+    flex: 1 1 auto;
+    min-width: 0;
 
     .social_icons {
         display: flex;
@@ -96,7 +98,7 @@
         }
 
         .logo { width: 1.25em; height: 1.25em; margin-right: 6px; }
-        .job-location { opacity: .75; font-weight: 500; }
+        .job-location { opacity: .75; font-weight: 500; white-space: nowrap; }
     }
 
     .tagline {
@@ -149,6 +151,8 @@
         border: 1px solid rgba(255, 255, 255, .12);
         backdrop-filter: blur(6px);
     }
+
+    .company-name { white-space: nowrap; }
 
     li.is-meta { border-color: rgba(74, 157, 255, .55); box-shadow: 0 0 24px rgba(0, 129, 251, .25); }
 
@@ -215,11 +219,32 @@
     .stat-source { color: #5000ca; }
 }
 
-.about-section .image-wrapper .avatar {
-    width: auto;
-    height: 520px;
-    border-radius: 0;
-    filter: drop-shadow(0 0 28px rgba(80, 0, 202, .55));
+@media (min-width: 769px) and (max-width: 1280px) {
+    .company-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+// Real me and virtual me, standing side by side on the same floor line
+.about-section .image-wrapper .duo {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+
+    img {
+        width: auto;
+        border-radius: 0;
+        height: 470px;
+    }
+
+    .me {
+        filter: drop-shadow(0 0 22px rgba(0, 129, 251, .35)) drop-shadow(0 16px 18px rgba(0, 0, 0, .5));
+    }
+
+    .avatar {
+        height: 488px;
+        filter: drop-shadow(0 0 28px rgba(80, 0, 202, .55));
+    }
 }
 
 .about-section .image-wrapper {
@@ -229,11 +254,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    .avatar {
-        position: relative;
-        z-index: 1;
-    }
 
     // Big Meta mark behind the avatar, faded into the background
     .avatar-backdrop {
@@ -360,8 +380,11 @@
             text-align: center;
         }
 
-        .about-section .image-wrapper .avatar {
-            height: 300px;
+        .about-section .image-wrapper .duo {
+            justify-content: center;
+
+            .me { height: 290px; }
+            .avatar { height: 302px; }
         }
 
         .about-section .image-wrapper .avatar-backdrop {
