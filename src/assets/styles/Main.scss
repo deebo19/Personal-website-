@@ -237,13 +237,40 @@
         height: 470px;
     }
 
-    .me {
-        filter: drop-shadow(0 0 22px rgba(0, 129, 251, .35)) drop-shadow(0 16px 18px rgba(0, 0, 0, .5));
-    }
-
+    // No CSS filters on these images: iOS Safari colour-manages filtered images differently from
+    // the page, which shows the transparent area as a faint rectangle. The glow is drawn by
+    // the gradient aura below instead.
     .avatar {
         height: 488px;
-        filter: drop-shadow(0 0 28px rgba(80, 0, 202, .55));
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: -12%;
+        right: -12%;
+        top: 8%;
+        bottom: -4%;
+        border-radius: 50%;
+        background:
+            radial-gradient(closest-side at 30% 50%, rgba(0, 129, 251, .32), transparent 75%),
+            radial-gradient(closest-side at 72% 50%, rgba(80, 0, 202, .45), transparent 75%);
+        pointer-events: none;
+    }
+
+    // Soft floor shadow under both pairs of feet
+    &::after {
+        content: "";
+        position: absolute;
+        z-index: -1;
+        left: 6%;
+        right: 6%;
+        bottom: -10px;
+        height: 26px;
+        border-radius: 50%;
+        background: radial-gradient(closest-side, rgba(0, 0, 0, .55), transparent);
+        pointer-events: none;
     }
 }
 
@@ -266,7 +293,6 @@
         left: 50%;
         transform: translate(-50%, -46%);
         opacity: .38;
-        filter: blur(1.5px) drop-shadow(0 0 40px rgba(0, 129, 251, .55));
         -webkit-mask-image: radial-gradient(closest-side, black 55%, transparent 100%);
         mask-image: radial-gradient(closest-side, black 55%, transparent 100%);
         pointer-events: none;
@@ -275,7 +301,10 @@
 
 .light-mode .about-section .image-wrapper .avatar-backdrop {
     opacity: .3;
-    filter: blur(1px);
+}
+
+.light-mode .about-section .image-wrapper .duo::after {
+    background: radial-gradient(closest-side, rgba(0, 0, 0, .18), transparent);
 }
 
 .about p {

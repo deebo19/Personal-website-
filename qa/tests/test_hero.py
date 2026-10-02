@@ -39,3 +39,15 @@ def test_each_company_card_has_a_figure_and_a_source(home: HomePage):
         assert re.match(r"^[\d.,]+[MBK]?\+?$", card.figure), f"{card.company}: odd figure {card.figure!r}"
         assert card.label, f"{card.company} has no label saying what the figure measures"
         assert card.source.startswith("https://"), f"{card.company} has no source link"
+
+
+@pytest.mark.regression
+def test_hero_images_have_no_css_filters(home: HomePage):
+    """iOS Safari colour-manages filtered images differently from the page, so a CSS filter on a
+    cut-out image shows its transparent area as a faint rectangle. Guard against it coming back."""
+    filters = home.page.evaluate(
+        """() => [...document.querySelectorAll('#top .image-wrapper img, #top .image-wrapper svg')]
+              .flatMap(el => { const out = []; for (let n = el; n && n.id !== 'top'; n = n.parentElement)
+                                 out.push(getComputedStyle(n).filter); return out; })"""
+    )
+    assert set(filters) == {"none"}, f"CSS filter found in the hero image stack: {set(filters) - {'none'}}"
