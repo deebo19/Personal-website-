@@ -13,9 +13,16 @@ test("page has a title and a single main heading", async ({ page }) => {
 });
 
 test("avatar is shown in the hero", async ({ page }) => {
-  const avatar = page.getByRole("img", { name: /avatar/i });
+  const avatar = page.getByRole("img", { name: "Adeeb's 3D avatar", exact: true });
   await expect(avatar).toBeVisible();
   expect(await avatar.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
+});
+
+test("Meta HQ photo with avatar is shown", async ({ page }) => {
+  const photo = page.getByRole("img", { name: /Meta sign at 1 Hacker Way/ });
+  await photo.scrollIntoViewIfNeeded();
+  await expect(photo).toBeVisible();
+  await expect.poll(() => photo.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
 });
 
 test("every lifecycle stage is shown, in order", async ({ page }) => {
