@@ -1,0 +1,40 @@
+.contact_wrapper {
+  text-align: center;
+
+  p { margin-bottom: 24px; }
+}
+
+.contact-buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  .contact-primary {
+    background-color: white;
+    color: #050f0b;
+    font-weight: 700;
+    text-transform: none;
+    font-size: 1rem;
+    padding: 10px 22px;
+  }
+
+  .contact-primary:hover {
+    background-color: #5000ca;
+    color: white;
+  }
+
+  .contact-secondary {
+    color: white;
+    border-color: rgba(255, 255, 255, .6);
+    font-weight: 700;
+    text-transform: none;
+    font-size: 1rem;
+    padding: 10px 22px;
+  }
+}
+
+.light-mode .contact-buttons {
+  .contact-primary { background-color: #5000ca; color: white; }
+  .contact-secondary { color: #0d1116; border-color: rgba(0, 0, 0, .4); }
+}

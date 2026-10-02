@@ -1,0 +1,60 @@
+.vertical-timeline span {
+    color: white;
+    font-family: 'Courier Prime', monospace;
+}
+
+.vertical-timeline p {
+    color: rgb(39, 40, 34);
+}
+
+.vertical-timeline-element p {
+    color: rgb(39, 40, 34);
+}
+
+.vertical-timeline-element h3 {
+    color: rgb(39, 40, 34);
+}
+
+.vertical-timeline-element h4 {
+    color: rgb(39, 40, 34);
+}
+
+.vertical-timeline-element span {
+    color: rgb(39, 40, 34);
+}
+
+.vertical-timeline-element .vertical-timeline-element-date {
+    color: white;
+}
+
+.svg-inline--fa {
+    color: white;
+}
+
+@media screen and (max-width: 1170px) {
+    .vertical-timeline-element .vertical-timeline-element-date {
+        color: rgb(39, 40, 34);
+    }
+}
+.role-points {
+    margin: 10px 0 0;
+    padding-left: 18px;
+
+    li {
+        color: rgb(39, 40, 34);
+        font-family: "Lato", sans-serif;
+        font-size: .95em;
+        line-height: 1.5;
+        margin-bottom: 6px;
+    }
+
+    a { color: #5000ca; }
+}
+
+.vertical-timeline-element-subtitle.company {
+    display: flex;
+    align-items: center;
+    margin-top: 4px !important;
+}
+
+.vertical-timeline-element-content .logo-meta { fill: #0064e0; }

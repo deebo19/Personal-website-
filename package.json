@@ -1,15 +1,58 @@
 {
   "name": "qa-portfolio",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "private": true,
-  "description": "Personal portfolio website for a QA Lead, with its own end-to-end test suite.",
+  "description": "Adeeb Hussain's QA Lead portfolio, based on yujisatojr/react-portfolio-template (MIT), with its own end-to-end test suite.",
+  "homepage": ".",
+  "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/react-fontawesome": "^0.2.2",
+    "@mui/icons-material": "^5.15.19",
+    "@mui/material": "^5.15.19",
+    "@types/node": "^16.18.98",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
+    "react-vertical-timeline-component": "^3.6.0",
+    "sass": "^1.77.4",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
   "scripts": {
-    "start": "node tests/serve.mjs",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "serve": "node tests/serve.mjs",
+    "pretest": "npm run build",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "report": "playwright show-report"
   },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
   "devDependencies": {
+    "@types/react-vertical-timeline-component": "^3.3.6",
     "@axe-core/playwright": "^4.10.0",
     "@playwright/test": "1.56.1"
   }

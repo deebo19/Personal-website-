@@ -1,0 +1,98 @@
+.projects-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5% 10%;
+    text-align: left;
+}
+
+.projects-container .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-gap: 50px;
+}
+
+.projects-container .projects-grid .project {
+    text-align: left;
+
+    h3 { font-size: 1.4em; margin: 18px 0 8px; }
+    dl { margin: 0; }
+    dt { font-weight: 700; font-size: .85em; margin-top: 10px; font-family: "Lato", sans-serif; }
+    dd { margin: 2px 0 0; line-height: 1.5; font-size: .95em; opacity: .9; font-family: "Lato", sans-serif; }
+    .project-link { display: inline-block; margin-top: 12px; font-weight: 700; }
+}
+
+.dark-mode .project dt, .dark-mode .project dd { color: white; }
+.light-mode .project dt, .light-mode .project dd { color: #0d1116; }
+
+.project-featured { grid-column: 1 / -1; }
+
+.project-banner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 200px;
+    padding: 22px 24px;
+    border-radius: 5px;
+    overflow: hidden;
+    background:
+        radial-gradient(600px 240px at 90% 0%, rgba(199, 125, 255, .55), transparent 60%),
+        linear-gradient(135deg, #2a0a6b 0%, #5000ca 55%, #9b4dff 100%);
+
+    span { color: white; font-family: "Lato", sans-serif; }
+
+    .banner-tag {
+        position: absolute;
+        top: 16px;
+        left: 20px;
+        display: flex;
+        align-items: center;
+        font-family: 'Courier Prime', monospace;
+        font-size: .8em;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        background: rgba(0, 0, 0, .35);
+        padding: 4px 10px;
+        border-radius: 999px;
+    }
+
+    .banner-tag .logo-meta { fill: #8cc2ff; }
+    .banner-stat { font-size: 3.2em; font-weight: 900; line-height: 1; }
+    .banner-label { font-size: 1em; opacity: .9; margin-top: 4px; }
+}
+
+.project-featured .project-banner { min-height: 240px; }
+.project-featured .banner-stat { font-size: 4.2em; }
+
+.zoom {
+    transition: transform .2s;
+    margin: 0 auto;
+}
+
+.zoom:hover {
+    transform: scale(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .zoom, .zoom:hover { transition: none; transform: none; }
+}
+
+@media screen {
+    @media (max-width: 700px) {
+        .projects-container {
+            display: block;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .projects-container .projects-grid {
+            display: block;
+        }
+
+        .projects-container .projects-grid .project {
+            padding-bottom: 10%;
+        }
+
+        .project-banner .banner-stat, .project-featured .banner-stat { font-size: 2.6em; }
+    }
+}

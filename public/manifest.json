@@ -1,0 +1,9 @@
+{
+  "short_name": "Adeeb Hussain",
+  "name": "Adeeb Hussain — QA Engineering Lead",
+  "icons": [{ "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#0d1116",
+  "background_color": "#0d1116"
+}
