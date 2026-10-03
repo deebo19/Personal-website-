@@ -4,6 +4,7 @@ import React, {
     useEffect,
     useState,
   } from "react";
+  import { PRERENDERED } from "../prerendered";
   
   interface Props {
     delay?: number;
@@ -17,7 +18,7 @@ import React, {
   }
   
   export default function FadeIn(props: PropsWithChildren<Props>) {
-    const [maxIsVisible, setMaxIsVisible] = useState(0);
+    const [maxIsVisible, setMaxIsVisible] = useState(() => (PRERENDERED ? React.Children.count(props.children) : 0));
     const transitionDuration = props.transitionDuration || 400;
     const delay = props.delay || 50;
     const WrapperTag = props.wrapperTag || "div";

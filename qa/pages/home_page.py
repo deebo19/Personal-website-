@@ -31,9 +31,13 @@ class HomePage(BasePage):
     def approach_stages(self) -> Locator:
         return self.page.locator(".lifecycle .stage-num")
 
-    def structured_data(self) -> dict:
-        """The schema.org JSON-LD that search engines read."""
+    def profile_page_data(self) -> dict:
+        """The schema.org ProfilePage JSON-LD that search engines read."""
         return json.loads(self.page.locator('script[type="application/ld+json"]').text_content())
+
+    def structured_data(self) -> dict:
+        """The Person the profile page is about."""
+        return self.profile_page_data()["mainEntity"]
 
     def local_asset_urls(self) -> list[str]:
         """Every same-origin link, stylesheet, script and image on the page."""

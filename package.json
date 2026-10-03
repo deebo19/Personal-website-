@@ -37,7 +37,8 @@
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "report": "playwright show-report",
-    "test:python": "cd qa && pytest"
+    "test:python": "cd qa && pytest",
+    "postbuild": "node scripts/prerender.mjs"
   },
   "eslintConfig": {
     "extends": [

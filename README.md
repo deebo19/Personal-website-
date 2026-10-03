@@ -47,3 +47,10 @@ Visit and click stats use [GoatCounter](https://www.goatcounter.com): free, no c
    and click events (`click-nav-*`, `click-out-*`, `click-button-*`, `click-email`).
 
 Local dev and automated test runs are never counted. `qa/tests/test_analytics.py` checks what gets sent using a stub.
+
+## Search engines (SEO)
+
+- Every build is **prerendered** (`scripts/prerender.mjs`): the shipped `index.html` already contains the full rendered page, so crawlers that don't run JavaScript still see the name, title and experience.
+- Structured data is a schema.org `ProfilePage` about a `Person`, linked to LinkedIn and GitHub.
+- **Google Search Console:** add a URL-prefix property for the site, choose "HTML tag", paste the `content` value into
+  `REACT_APP_GOOGLE_SITE_VERIFICATION` in `.env`, push, verify, then submit `sitemap.xml` and request indexing.
