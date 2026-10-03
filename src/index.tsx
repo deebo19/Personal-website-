@@ -10,7 +10,17 @@ import '@fontsource/space-mono/400.css';
 import '@fontsource/space-mono/700.css';
 import './index.scss';
 import App from './App';
+
 import reportWebVitals from './reportWebVitals';
+
+// Always open the portfolio at the top. Tapping a menu item leaves "#section" in the address,
+// so reopening, refreshing or sharing that link would otherwise jump straight to that section;
+// browsers (notably iOS Safari) also restore the previous scroll position on reload.
+if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+if (window.location.hash && !window.location.hash.startsWith('#/')) {
+  window.history.replaceState(null, '', window.location.pathname + window.location.search);
+}
+window.scrollTo(0, 0);
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
