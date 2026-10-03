@@ -90,3 +90,15 @@ def test_snapshot_is_replaced_by_the_live_app_without_duplicates(home: HomePage)
 def test_testing_page_link_never_shows_the_home_snapshot(page, base_url: str):
     page.goto(f"{base_url}/#/testing", wait_until="domcontentloaded")
     expect(page.locator("#root h1", has_text="Adeeb Hussain")).to_have_count(0)
+
+
+@pytest.mark.smoke
+def test_google_search_console_verification_file_is_published(home: HomePage, base_url: str):
+    res = home.page.request.get(f"{base_url}/googleb7c5fd5885b84286.html")
+    assert res.ok and res.text().strip() == "google-site-verification: googleb7c5fd5885b84286.html"
+
+
+@pytest.mark.smoke
+def test_google_search_console_verification_tag_is_in_the_head(home: HomePage):
+    tag = home.page.locator('head meta[name="google-site-verification"]')
+    expect(tag).to_have_attribute("content", "tFHv9y1QltIkkhaTHaf-zh7MZeeRBFlCCHI94HfkRlo")
