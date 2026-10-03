@@ -428,3 +428,36 @@
         .about-section .content .job-title { font-size: 1.2em; }
     }
 }
+// "Built with Claude Code" badge at the top of the hero
+.about-section .content a.built-with {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin: 0 0 14px;
+    padding: 6px 14px 6px 10px;
+    border-radius: 999px;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: .85rem;
+    color: white;
+    text-decoration: none;
+    background: rgba(217, 119, 87, .14);
+    border: 1px solid rgba(217, 119, 87, .55);
+    transition: background .2s, border-color .2s;
+
+    strong { font-weight: 700; color: inherit; }
+    .built-with-spark { color: #e8916f; font-size: 1.05em; line-height: 1; }
+
+    &:hover { background: rgba(217, 119, 87, .26); border-color: #d97757; }
+    &:focus-visible { outline: 2px solid #e8916f; outline-offset: 3px; }
+}
+
+.light-mode .about-section .content a.built-with {
+    color: #0d1116;
+    background: rgba(217, 119, 87, .12);
+    border-color: rgba(176, 79, 44, .5);
+    .built-with-spark { color: #b04f2c; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .about-section .content a.built-with { transition: none; }
+}

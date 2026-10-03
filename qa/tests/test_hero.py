@@ -51,3 +51,13 @@ def test_hero_images_have_no_css_filters(home: HomePage):
                                  out.push(getComputedStyle(n).filter); return out; })"""
     )
     assert set(filters) == {"none"}, f"CSS filter found in the hero image stack: {set(filters) - {'none'}}"
+
+
+@pytest.mark.smoke
+def test_built_with_claude_banner_is_at_the_top(home: HomePage):
+    banner = home.page.get_by_role("link", name="Built with Claude Code by Anthropic")
+    expect(banner).to_be_visible()
+    expect(banner).to_have_attribute("href", "https://claude.com/claude-code")
+    expect(banner).to_have_attribute("target", "_blank")
+    # Shown before the name, so it's one of the first things visitors see
+    assert banner.bounding_box()["y"] < home.main_heading.bounding_box()["y"]

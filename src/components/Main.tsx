@@ -23,6 +23,10 @@ function Main() {
     <div className="container" id="top">
       <div className="about-section">
         <div className="content">
+          <a className="built-with" href="https://claude.com/claude-code" target="_blank" rel="noreferrer">
+            <span className="built-with-spark" aria-hidden="true">✳</span>
+            Built with <strong>Claude Code</strong> by Anthropic
+          </a>
           <SocialIcons className="social_icons" />
           <h1>{PROFILE.name}</h1>
           <p className="job-title">
