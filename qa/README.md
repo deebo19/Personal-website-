@@ -28,6 +28,6 @@ cd qa && pytest                      # headless by default
 | `pytest -m "not mobile"` | skip emulated-phone tests |
 | `pytest --headed --slowmo 300` | watch it in a visible browser |
 | `pytest --browser firefox` | run on Firefox (or `webkit`) |
-| `QA_BASE_URL=https://deebo19.github.io/Personal-website- pytest` | test the live site |
+| `QA_BASE_URL=https://deebo19.github.io/qa-portfolio pytest` | test the live site |
 
 Failures keep a screenshot and a Playwright trace in `qa/test-results/`; open one with `playwright show-trace <file>`.

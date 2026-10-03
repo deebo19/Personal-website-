@@ -1,6 +1,6 @@
 # Adeeb Hussain — QA Lead Portfolio
 
-Live site: **https://deebo19.github.io/Personal-website-/**
+Live site: **https://deebo19.github.io/qa-portfolio/**
 
 A portfolio for recruiters and hiring managers covering my QA career end to end, with its own automated test suite and a deploy that only ships when every test passes.
 
