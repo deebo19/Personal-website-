@@ -10,6 +10,7 @@ import '@fontsource/space-mono/400.css';
 import '@fontsource/space-mono/700.css';
 import './index.scss';
 import App from './App';
+import { initAnalytics } from './analytics';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -21,6 +22,7 @@ if (window.location.hash && !window.location.hash.startsWith('#/')) {
   window.history.replaceState(null, '', window.location.pathname + window.location.search);
 }
 window.scrollTo(0, 0);
+initAnalytics();
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

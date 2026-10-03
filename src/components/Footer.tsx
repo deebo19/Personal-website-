@@ -12,6 +12,9 @@ function Footer() {
         <a href={LINKS.linkedin} target="_blank" rel="noreferrer" aria-label="LinkedIn"><LinkedInIcon/></a>
       </div>
       <p>© {new Date().getFullYear()} Adeeb Hussain · Covered by its own <a href={`${process.env.REACT_APP_REPO_URL}/actions`} target="_blank" rel="noreferrer">automated test suite</a></p>
+      {process.env.REACT_APP_GOATCOUNTER_CODE && (
+        <p className="credit privacy-note">Anonymous, cookie-free visit stats via <a href="https://www.goatcounter.com" target="_blank" rel="noreferrer">GoatCounter</a>. No personal data is collected.</p>
+      )}
       <p className="credit">Design based on the open-source template by <a href="https://github.com/yujisatojr/react-portfolio-template" target="_blank" rel="noreferrer">Yuji Sato</a> (MIT)</p>
     </footer>
   );

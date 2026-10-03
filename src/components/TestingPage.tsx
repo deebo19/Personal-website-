@@ -40,6 +40,7 @@ const TREE = `qa/
     ├── test_theme.py
     ├── test_health.py
     ├── test_seo.py
+    ├── test_analytics.py      # visit/click tracking, stubbed so tests never count
     └── test_testing_page.py`;
 
 const RUN = `# 1. Build the site (the suite tests the production build)

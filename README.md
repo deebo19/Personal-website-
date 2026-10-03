@@ -36,3 +36,14 @@ npm test         # builds, then runs the full test suite (desktop + mobile)
 A second, independent suite lives in [`qa/`](qa/README.md): **Python + Playwright + Page Object Model**, run headless with `cd qa && pytest`. It's explained on the site's own "How I Test" page.
 
 CI (`.github/workflows/ci.yml`) builds the site, runs the JS suite against that exact build, then the Python POM suite, checks the bundle has every referenced file, and only deploys from `main` when everything passed.
+
+## Visitor analytics
+
+Visit and click stats use [GoatCounter](https://www.goatcounter.com): free, no cookies, no consent banner needed.
+
+1. Sign up at goatcounter.com and pick a site code (e.g. `adeeb-qa`).
+2. Set `REACT_APP_GOATCOUNTER_CODE=adeeb-qa` in `.env` and push.
+3. View the dashboard at `https://adeeb-qa.goatcounter.com`: visitors, pages, countries, referrers, devices,
+   and click events (`click-nav-*`, `click-out-*`, `click-button-*`, `click-email`).
+
+Local dev and automated test runs are never counted. `qa/tests/test_analytics.py` checks what gets sent using a stub.
